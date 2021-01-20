@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+#include "unistd.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,12 +30,12 @@ int main(int argc, char** argv)
 				printf("%s", buf);
 			}
 			pclose(fp);
+			usleep(8000);
+			system("clear");
 		}
 		else if ((fp = popen(cmd, "r")) == NULL)
 		{
-			system("clear");
-			printf("\x1b[49m");
-			printf("\x1b[7m");
+			return -1;
 		}
 		if (i == t)
 		{
