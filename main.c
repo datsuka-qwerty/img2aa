@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "unistd.h"
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,6 +11,8 @@ int main(int argc, char** argv)
 	char  buf[1024];
 
 	int t = 0;
+
+	int microsecond = 0.08 * 1000000;
 
 
 	printf("画像は全部で何枚？ ->");	scanf("%d", &t);
@@ -25,13 +27,14 @@ int main(int argc, char** argv)
 		sprintf(cmd, "%simg/%d.jpg",cmd1, i);
 		if ((fp = popen(cmd, "r")) != NULL)
 		{
+			usleep(microsecond);
+			system("clear");
+
 			while (fgets(buf, sizeof(buf), fp) != NULL)
 			{
 				printf("%s", buf);
 			}
 			pclose(fp);
-			usleep(8000);
-			system("clear");
 		}
 		else if ((fp = popen(cmd, "r")) == NULL)
 		{
