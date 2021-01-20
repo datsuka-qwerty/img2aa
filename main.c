@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 
 	while(1)
 	{
-		char *cmd1 = "jp2a --height=100 --background=light ";
+		char *cmd1 = "jp2a --height=100 --background=light "; // heightを変えると行数が変わる backroundはlightかinvertおすすめそれか設定しない
 		char *cmd;
 		sprintf(cmd, "%simg/%d.jpg",cmd1, i);
 		if ((fp = popen(cmd, "r")) != NULL)
