@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 	while(1)
 	{
 		char cmd[1024];
-		sprintf_s(cmd, sizeof(cmd), "jp2a --height=100 --background=light img/%d.jpg", i);
+		sprintf_s(cmd, sizeof(cmd), "jp2a --height=100 --background=light img/%d.jpg", i); // error is here
 		if ((fp = popen(cmd, "r")) != NULL)
 		{
 			usleep(microsecond);
