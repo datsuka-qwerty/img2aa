@@ -1,8 +1,6 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 int main(int argc, char** argv)
 {
@@ -10,12 +8,8 @@ int main(int argc, char** argv)
 	FILE *fp = NULL;
 	char  buf[1024];
 
-	int t = 0;
-
 	int microsecond = 0.08 * 1000000;
 
-
-	printf("画像は全部で何枚？ ->");	scanf("%d", &t);
 	system("clear");
 	printf("\x1b[49m");
 	printf("\x1b[7m");
@@ -38,15 +32,7 @@ int main(int argc, char** argv)
 		}
 		else if ((fp = popen(cmd, "r")) == NULL)
 		{
-			return -1;
-		}
-		if (i == t)
-		{
 			i = 1;
-		}
-		else
-		{
-			i = i + 1;
 		}
 	}
 
