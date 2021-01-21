@@ -4,11 +4,14 @@
 
 int main(int argc, char** argv)
 {
+	int t = 0;
 	int i = 1;
 	FILE *fp = NULL;
 	char  buf[1024];
 
-	int microsecond = 0.08 * 1000000;
+	int microsecond = 1 * 1000000;
+
+	printf("");     scanf("%d", &t);
 
 	system("clear");
 	printf("\x1b[49m");
@@ -16,9 +19,8 @@ int main(int argc, char** argv)
 
 	while(1)
 	{
-		char *cmd1 = "jp2a --height=100 --background=light "; // heightを変えると行数が変わる backroundはlightかinvertおすすめそれか設定しない
-		char *cmd;
-		sprintf(cmd, "%simg/%d.jpg",cmd1, i);
+		char cmd[1024];
+		sprintf(cmd, "jp2a --height=100 --background=light img/%d.jpg", i);
 		if ((fp = popen(cmd, "r")) != NULL)
 		{
 			usleep(microsecond);
@@ -29,10 +31,20 @@ int main(int argc, char** argv)
 				printf("%s", buf);
 			}
 			pclose(fp);
+
+			i = i + 1;
 		}
 		else if ((fp = popen(cmd, "r")) == NULL)
 		{
+			return -1;
+		}
+		if (i == t)
+		{
 			i = 1;
+		}
+		else
+		{
+			i = i + 1;
 		}
 	}
 
