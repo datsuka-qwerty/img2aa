@@ -9,9 +9,9 @@ int main(int argc, char** argv)
 	FILE *fp = NULL;
 	char  buf[1024];
 
-	int microsecond = 1 * 1000000;
+	int microsecond = 0.5 * 1000000;
 
-	printf("");     scanf("%d", &t);
+	printf("画像は何枚？");     scanf("%d", &t);
 
 	system("clear");
 	printf("\x1b[49m");
